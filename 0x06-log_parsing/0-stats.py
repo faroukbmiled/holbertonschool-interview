@@ -33,3 +33,4 @@ if __name__ == "__main__":
                 metrics(size, status_codes)
     except KeyboardInterrupt:
         metrics(size, status_codes)
+        raise
