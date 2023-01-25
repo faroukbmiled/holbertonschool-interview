@@ -5,9 +5,9 @@ import sys
 
 def metrics(total_size, status_codes):
     """Prints the metrics"""
-    print(f'File size: {total_size}')
+    print('File size: {}'.format(total_size))
     for status_code in sorted(status_codes.keys()):
-        print(f"{status_code}: {status_codes[status_code]}")
+        print("{}: {}".format(status_code, status_codes[status_code]))
 
 
 size = 0
