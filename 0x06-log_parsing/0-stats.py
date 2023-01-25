@@ -10,6 +10,9 @@ def metrics(total_size, status_codes):
         print("{}: {}".format(status_code, status_codes[status_code]))
 
 
+if __name__ == "__main__":
+    """ main """
+
 size = 0
 status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 count = 0
