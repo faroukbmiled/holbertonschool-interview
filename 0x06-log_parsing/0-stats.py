@@ -2,11 +2,13 @@
 """Script that reads stdin line by line and computes metrics"""""
 import sys
 
+
 def metrics(total_size, status_codes):
     """Prints the metrics"""
     print(f'File size: {total_size}')
     for status_code in sorted(status_codes.keys()):
         print(f"{status_code}: {status_codes[status_code]}")
+
 
 size = 0
 status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
