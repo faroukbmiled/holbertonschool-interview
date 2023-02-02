@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Script that read stdin line by line and computes metrics"""
-
+"""read stdin lines"""
 import sys
 
 size = 0
