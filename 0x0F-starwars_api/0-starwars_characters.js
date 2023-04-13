@@ -1,7 +1,6 @@
 #!/usr/bin/node
-'star wars api'
-
 const request = require('request');
+
 const movieId = process.argv[2];
 const url = `https://swapi.dev/api/films/${movieId}/`;
 
