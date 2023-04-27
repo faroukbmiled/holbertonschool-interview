@@ -21,7 +21,7 @@ void swap(int *a, int *b)
  *@end: The end of the subtree to be sifted down
  *@size: The size of the heap
  */
-void sift_down(int *array, size_t start, size_t end, size_t size)
+static void sift_down(int *array, size_t start, size_t end, size_t size)
 {
 	size_t root = start;
 
