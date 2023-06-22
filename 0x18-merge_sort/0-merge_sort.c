@@ -31,26 +31,26 @@ void merge(int *arr, int start, int mid, int end, int *copy)
 }
 
 /**
- * split - split array
- * @arr: array to sort
- * @first: start index of the array
- * @last: end index of the array
- * @sorted_arr: sorted array
+ *split - split  array
+ *@arr: array to sort
+ *@first: a copy of the array to sort
+ *@last: start index of the array
+ *@sorted_arr: sorted array
  */
 void split(int *arr, int first, int last, int *sorted_arr)
 {
-	int mid;
+	int mid = (first + last) / 2;
+	int i = 0;
 
 	if (last - first <= 1)
 		return;
 
-	mid = (first + last) / 2;
 	split(sorted_arr, first, mid, arr);
 	split(sorted_arr, mid, last, arr);
 	printf("Merging...\n");
 
 	printf("[Left]: ");
-	for (int i = first; i < mid; i++)
+	for (i = first; i < mid; i++)
 	{
 		printf("%d", sorted_arr[i]);
 		if (i < mid - 1)
@@ -58,22 +58,24 @@ void split(int *arr, int first, int last, int *sorted_arr)
 	}
 
 	printf("\n[Right]: ");
-	for (int i = mid; i < last; i++)
+	for (i = mid; i < last; i++)
 	{
 		printf("%d", sorted_arr[i]);
 		if (i < last - 1)
 			printf(", ");
 	}
+
 	merge(arr, first, mid, last, sorted_arr);
 
 	printf("\n");
 	printf("[Done]: ");
-	for (int i = first; i < last; i++)
+	for (i = first; i < last; i++)
 	{
 		printf("%d", arr[i]);
 		if (i < last - 1)
 			printf(", ");
 	}
+
 	printf("\n");
 }
 
