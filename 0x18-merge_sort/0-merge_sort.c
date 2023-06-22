@@ -45,14 +45,14 @@ void split(int *arr, int first, int last, int *sorted_arr)
 	if (last - first <= 1)
 		return;
 
-	split(sorted_arr, first, mid, arr);
-	split(sorted_arr, mid, last, arr);
+	split(arr, first, mid, sorted_arr);
+	split(arr, mid, last, sorted_arr);
 	printf("Merging...\n");
 
 	printf("[Left]: ");
 	for (i = first; i < mid; i++)
 	{
-		printf("%d", sorted_arr[i]);
+		printf("%d", arr[i]);
 		if (i < mid - 1)
 			printf(", ");
 	}
@@ -60,7 +60,7 @@ void split(int *arr, int first, int last, int *sorted_arr)
 	printf("\n[Right]: ");
 	for (i = mid; i < last; i++)
 	{
-		printf("%d", sorted_arr[i]);
+		printf("%d", arr[i]);
 		if (i < last - 1)
 			printf(", ");
 	}
