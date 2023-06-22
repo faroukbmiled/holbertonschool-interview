@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- *merge - merge two arraies
- *@arr: array to sort
- *@start: a copy of the array to sort
- *@mid: start index
- *@end:  end index
- *@copy: mid index
+ *merge - Merges two arrays into one sorted array.
+ *@arr: The main array.
+ *@start: The start array.
+ *@mid: The mid array.
+ *@end: The end array.
+ *@copy: copy.
  */
 
 void merge(int *arr, int start, int mid, int end, int *copy)
@@ -32,10 +32,10 @@ void merge(int *arr, int start, int mid, int end, int *copy)
 
 /**
  *split - split  array
- *@array: array to sort
+ *@arr: array to sort
  *@first: a copy of the array to sort
  *@last: start index of the array
- *@sorted_arr: end index of the array
+ *@sorted_arr: sorted array
  */
 void split(int *arr, int first, int last, int *sorted_arr)
 {
@@ -80,9 +80,9 @@ void split(int *arr, int first, int last, int *sorted_arr)
 }
 
 /**
- *merge_sort -  sort array using merge sort
- *@array: array to sort
- *@size: size of the array
+ *merge_sort - Recursively divides and sorts the array.
+ *@array: The array to be sorted.
+ *@size: The number of elements in the array.
  */
 void merge_sort(int *array, size_t size)
 {
