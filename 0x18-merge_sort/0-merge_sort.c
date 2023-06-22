@@ -1,4 +1,6 @@
 #include "sort.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  *merge - Merges two arrays into one sorted array.
@@ -8,7 +10,6 @@
  *@end: The end array.
  *@copy: copy.
  */
-
 void merge(int *arr, int start, int mid, int end, int *copy)
 {
 	int s = start;
@@ -56,7 +57,6 @@ void split(int *arr, int first, int last, int *sorted_arr)
 		if (i < mid - 1)
 			printf(", ");
 	}
-
 	printf("\n[Right]: ");
 	for (i = mid; i < last; i++)
 	{
@@ -64,9 +64,7 @@ void split(int *arr, int first, int last, int *sorted_arr)
 		if (i < last - 1)
 			printf(", ");
 	}
-
 	merge(arr, first, mid, last, sorted_arr);
-
 	printf("\n");
 	printf("[Done]: ");
 	for (i = first; i < last; i++)
@@ -75,7 +73,6 @@ void split(int *arr, int first, int last, int *sorted_arr)
 		if (i < last - 1)
 			printf(", ");
 	}
-
 	printf("\n");
 }
 
@@ -93,7 +90,6 @@ void merge_sort(int *array, size_t size)
 
 	for (a = 0; a < size; a++)
 		copy[a] = array[a];
-
 	split(array, 0, size, copy);
 	free(copy);
 }
