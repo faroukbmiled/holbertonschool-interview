@@ -18,7 +18,7 @@ void merge(int *arr, int start, int mid, int end, int *copy)
 
 	for (i = start; i < end; i++)
 	{
-		if (s < mid && (m >= end || copy[s] <= copy[m]))
+		if (s < mid && (m >= end || copy[s] < copy[m]))
 		{
 			arr[i] = copy[s];
 			s = s + 1;
