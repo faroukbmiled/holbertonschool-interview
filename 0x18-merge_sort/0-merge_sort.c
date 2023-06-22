@@ -89,7 +89,7 @@ void merge_sort(int *array, size_t size)
 	int *copy;
 	size_t a = 0;
 
-	copy = malloc(sizeof(int) *size);
+	copy = malloc(sizeof(int) * size);
 
 	for (a = 0; a < size; a++)
 		copy[a] = array[a];
