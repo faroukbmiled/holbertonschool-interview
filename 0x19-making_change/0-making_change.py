@@ -4,31 +4,18 @@
 
 def makeChange(coins, total):
     """makeChange func"""
-    if total <= 0:
-        return 0
+    dp = {0: 0}
 
-    coins.sort(reverse=True)
-    memo = {}
+    for i in range(1, total + 1):
+        dp[i] = float('inf')
 
-    def dp(n):
-        if n in memo:
-            return memo[n]
+        for coin in sorted(coins, reverse=True):
+            if coin <= i:
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+            else:
+                break
 
-        if n == 0:
-            return 0
-
-        min_coins = float('inf')
-
-        for coin in coins:
-            if coin <= n:
-                min_coins = min(min_coins, dp(n - coin) + 1)
-
-        memo[n] = min_coins
-        return min_coins
-
-    result = dp(total)
-
-    if result == float('inf'):
+    if dp[total] == float('inf'):
         return -1
 
-    return result
+    return dp[total]
