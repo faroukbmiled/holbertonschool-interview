@@ -8,14 +8,27 @@ def makeChange(coins, total):
         return 0
 
     coins.sort(reverse=True)
+    memo = {}
 
-    num_coins = 0
-    for coin in coins:
-        if coin <= total:
-            num_coins += total // coin
-            total %= coin
+    def dp(n):
+        if n in memo:
+            return memo[n]
 
-    if total != 0:
+        if n == 0:
+            return 0
+
+        min_coins = float('inf')
+
+        for coin in coins:
+            if coin <= n:
+                min_coins = min(min_coins, dp(n - coin) + 1)
+
+        memo[n] = min_coins
+        return min_coins
+
+    result = dp(total)
+
+    if result == float('inf'):
         return -1
 
-    return num_coins
+    return result
