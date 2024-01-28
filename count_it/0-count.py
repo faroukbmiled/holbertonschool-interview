@@ -6,9 +6,9 @@ import requests
 def count_words(subreddit, word_list, after=None, count=None):
     """count using reddit api"""
 
-    if count == None:
+    if count is None:
         count = {}
-    if after == None:
+    if after is None:
         url = "https://www.reddit.com/r/{}/hot.json".format(
             subreddit)
     else:
