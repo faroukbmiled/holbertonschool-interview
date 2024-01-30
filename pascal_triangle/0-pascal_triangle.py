@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """pascal_triangle"""
 
+
 def pascal_triangle(n):
     """pascal_triangle func"""
     if n <= 0:
