@@ -10,8 +10,9 @@ try:
     for lines in sys.stdin:
         try:
             elements = lines.split(" ")
-            status_code = int(elements[7])
-            file_size = int(elements[8])
+            status_code = int(elements[-2])
+            file_size = int(elements[-1])
+
             if status_code in status_codes:
                 status_codes[status_code] += 1
                 size += file_size
