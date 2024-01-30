@@ -10,7 +10,7 @@ try:
     for lines in sys.stdin:
         try:
             elements = lines.split(" ")
-            status_code = int(elements[-2])
+            status_code = int(elements[-2]) if elements[-2].isdigit() else 0
             file_size = int(elements[-1])
 
             if status_code in status_codes:
@@ -22,10 +22,12 @@ try:
         if count % 10 == 0:
             print('File size: {}'.format(size))
             for status_code in sorted(status_codes.keys()):
-                print("{}: {}".format(status_code, status_codes[status_code]))
+                if status_codes[status_code] > 0:
+                    print("{}: {}".format(status_code, status_codes[status_code]))
             count = 0
 except KeyboardInterrupt:
     print('File size: {}'.format(size))
     for status_code in sorted(status_codes.keys()):
-        print("{}: {}".format(status_code, status_codes[status_code]))
+        if status_codes[status_code] > 0:
+            print("{}: {}".format(status_code, status_codes[status_code]))
     raise
