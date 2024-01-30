@@ -2,42 +2,41 @@
 """Prime Game Module"""
 
 
-def is_prime(n):
-    """is_prime: Check if a number is prime"""
-    if n < 2:
-        return False
-
-    sieve = [True] * (n + 1)
-    sieve[0] = sieve[1] = False
-
-    for i in range(2, int(n**0.5) + 1):
-        if sieve[i]:
-            for j in range(i * i, n + 1, i):
-                sieve[j] = False
-
-    return sieve[n]
+def is_prime_number(n):
+    for i in range(2, int(n ** 0.5) + 1):
+        if not n % i:
+            return False
+    return True
 
 
-def isWinner(x, nums):
-    """
-    isWinner: Determines the winner of the prime game for each round.
-    """
-    if not nums or x <= 0:
-        return None
+def add_prime_number(n, primes_list):
+    last_prime = primes_list[-1]
+    if n > last_prime:
+        for i in range(last_prime + 1, n + 1):
+            if is_prime_number(i):
+                primes_list.append(i)
+            else:
+                primes_list.append(0)
 
-    maria_wins = 0
-    ben_wins = 0
 
-    for n in nums:
-        prime_count = sum(1 for i in range(1, n + 1) if is_prime(i))
-        if prime_count % 2 == 0:
-            ben_wins += 1
-        else:
-            maria_wins += 1
+def determine_round_winner(round_number, primes_list):
+    prime_count = sum((i != 0 and i <= round_number) for i in primes_list[:round_number + 1])
+    return "Maria" if prime_count % 2 else "Ben"
 
-    if maria_wins > ben_wins:
+
+def isWinner(num_rounds, round_values):
+    players_score = {"Maria": 0, "Ben": 0}
+    primes = [0, 0, 2]
+    add_prime_number(max(round_values), primes)
+
+    for current_round in range(num_rounds):
+        round_winner = determine_round_winner(round_values[current_round], primes)
+        if round_winner:
+            players_score[round_winner] += 1
+
+    if players_score["Maria"] > players_score["Ben"]:
         return "Maria"
-    elif ben_wins > maria_wins:
+    elif players_score["Ben"] > players_score["Maria"]:
         return "Ben"
-    else:
-        return None
+
+    return None
