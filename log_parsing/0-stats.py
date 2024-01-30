@@ -9,25 +9,25 @@ count = 0
 try:
     for lines in sys.stdin:
         try:
-            elements = lines.split(" ")
-            status_code = int(elements[-2]) if elements[-2].isdigit() else 0
-            file_size = int(elements[-1])
-
-            if status_code in status_codes:
-                status_codes[status_code] += 1
-                size += file_size
+            sp = lines.split(" ")
+            if len(sp) > 2:
+                size += int(sp[-1])
+                status_code = int(sp[-2]) if sp[-2].isdigit() else 0
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
             count += 1
         except Exception:
             pass
         if count % 10 == 0:
-            print('File size: {}'.format(size))
-            for status_code in sorted(status_codes.keys()):
-                if status_codes[status_code] > 0:
-                    print("{}: {}".format(status_code, status_codes[status_code]))
+            print("File size: {}".format(size))
+            for key, value in sorted(status_codes.items()):
+                if value != 0:
+                    print("{}: {}".format(key, value))
             count = 0
+
 except KeyboardInterrupt:
-    print('File size: {}'.format(size))
-    for status_code in sorted(status_codes.keys()):
-        if status_codes[status_code] > 0:
-            print("{}: {}".format(status_code, status_codes[status_code]))
+    print("File size: {}".format(size))
+    for key, value in sorted(status_codes.items()):
+        if value != 0:
+            print("{}: {:d}".format(key, value))
     raise
