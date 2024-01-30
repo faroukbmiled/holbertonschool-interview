@@ -3,21 +3,19 @@
 
 
 def makeChange(coins, total):
-    """makeChange func with memoization"""
-
+    """makeChange func"""
     if total < 0:
         return 0
 
-    memo = {}
+    coins.sort(reverse=True)
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
 
-    def dp(amount):
-        if amount < 0:
-            return float('inf')
-        if amount == 0:
-            return 0
-        if amount not in memo:
-            memo[amount] = min(dp(amount - coin) + 1 for coin in coins)
-        return memo[amount]
+    for coin in coins:
+        if coin > total:
+            continue
 
-    result = dp(total)
-    return result if result != float('inf') else -1
+        for amount in range(coin, total + 1):
+            dp[amount] = min(dp[amount], dp[amount - coin] + 1)
+
+    return dp[total] if dp[total] != float('inf') else -1
