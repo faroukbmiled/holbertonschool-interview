@@ -25,9 +25,8 @@ try:
                     print("{}: {}".format(key, value))
             count = 0
 
-except KeyboardInterrupt:
+finally:
     print("File size: {}".format(size))
     for key, value in sorted(status_codes.items()):
-        if value != 0:
-            print("{}: {:d}".format(key, value))
-    raise
+            if value != 0:
+                print("{}: {:d}".format(key, value))
