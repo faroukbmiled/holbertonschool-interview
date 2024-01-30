@@ -23,7 +23,8 @@ def add_prime_number(n, primes_list):
 
 def determine_round_winner(round_number, primes_list):
     """determine_round_winner"""
-    prime_count = sum((i != 0 and i <= round_number) for i in primes_list[:round_number + 1])
+    prime_count = sum((i != 0 and i <= round_number)
+                      for i in primes_list[:round_number + 1])
     return "Maria" if prime_count % 2 else "Ben"
 
 
@@ -34,7 +35,8 @@ def isWinner(num_rounds, round_values):
     add_prime_number(max(round_values), primes)
 
     for current_round in range(num_rounds):
-        round_winner = determine_round_winner(round_values[current_round], primes)
+        round_winner = determine_round_winner(round_values[current_round],
+                                              primes)
         if round_winner:
             players_score[round_winner] += 1
 
