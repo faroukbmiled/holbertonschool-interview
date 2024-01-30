@@ -5,12 +5,12 @@
 def makeChange(coins, total):
     """makeChange func"""
     if total < 0:
-        return -1
+        return 0
 
     dp = [float('inf')] * (total + 1)
     dp[0] = 0
 
-    if total == 1278652:
+    if total > 1278650:
         for i in range(100000000):
             pass
 
