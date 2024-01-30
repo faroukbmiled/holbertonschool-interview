@@ -7,15 +7,15 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    coins.sort(reverse=True)
+    coins.sort()
 
     num_coins = 0
-    for coin in coins:
+    for coin in reversed(coins):
         if coin <= total:
             num_coins += total // coin
             total %= coin
 
-    if total < 0:
+    if total > 0:
         return -1
 
     return num_coins
