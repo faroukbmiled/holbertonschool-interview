@@ -8,7 +8,6 @@
 #define SLIDE_RIGHT 5
 
 int slide_line(int *line, size_t size, int direction);
-void perform_slide(int *line, size_t size, int direction);
-void merge_adjacent(int *line, size_t size);
+void perform_slide(int *line, int current, int destination);
 
 #endif
