@@ -6,12 +6,12 @@
  */
 void menger(int level)
 {
+	int size, i, j, n;
+
 	if (level < 0)
 		return;
 
-	int size = (int) pow(3, level);
-
-	int i, j, n;
+	size = (int) pow(3, level);
 
 	for (i = 0; i < size; i++)
 	{
