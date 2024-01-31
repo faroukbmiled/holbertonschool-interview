@@ -13,20 +13,21 @@
  *
  *Return: 1 if a match is found, 0 otherwise
  */
-static int check_word_match(const char *substring, const char
-**words, int nb_words, int len, int *visited)
+static int check_word_match(const char *substring, const char **
+		words, int nb_words, int len, int *visited)
 {
-    int k;
-    for (k = 0; k < nb_words; k++)
-    {
-        if (!visited[k] && strncmp(substring, words[k], len) == 0)
-        {
-            visited[k] = 1;
-            return (1);
-        }
-    }
+	int k;
 
-    return (0);
+	for (k = 0; k < nb_words; k++)
+	{
+		if (!visited[k] && strncmp(substring, words[k], len) == 0)
+		{
+			visited[k] = 1;
+			return (1);
+		}
+	}
+
+	return (0);
 }
 
 /**
@@ -41,35 +42,35 @@ static int check_word_match(const char *substring, const char
  *
  *Return: the updated count of valid indices
  */
-static int process_substring(const char *s, const char
-**words, int nb_words, int len, int *indices, int n, int i)
+static int process_substring(const char *s, const char **
+		words, int nb_words, int len, int *indices, int n, int i)
 {
-    int j;
-    int *visited = calloc(nb_words, sizeof(int));
-    int found = 1;
+	int j;
+	int *visited = calloc(nb_words, sizeof(int));
+	int found = 1;
 
-    if (visited == NULL)
-    {
-        free(indices);
-        return (-1);
-    }
+	if (visited == NULL)
+	{
+		free(indices);
+		return (-1);
+	}
 
-    for (j = 0; j < nb_words; j++)
-    {
-        found = check_word_match(s + i + j * len, words, nb_words, len, visited);
-        if (!found)
-            break;
-    }
+	for (j = 0; j < nb_words; j++)
+	{
+		found = check_word_match(s + i + j * len, words, nb_words, len, visited);
+		if (!found)
+			break;
+	}
 
-    free(visited);
+	free(visited);
 
-    if (found)
-    {
-        indices[n] = i;
-        n++;
-    }
+	if (found)
+	{
+		indices[n] = i;
+		n++;
+	}
 
-    return (n);
+	return (n);
 }
 
 /**
